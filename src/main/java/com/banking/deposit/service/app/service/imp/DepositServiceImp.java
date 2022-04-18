@@ -1,4 +1,4 @@
-package com.banking.deposit.service.app.serviceImpl;
+package com.banking.deposit.service.app.service.imp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-public class DepositServiceImpl implements DepositService{
+public class DepositServiceImp implements DepositService{
 	
 	@Autowired
 	private DepositRepository despositRepository;
