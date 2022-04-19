@@ -22,10 +22,10 @@ public class Deposit {
 	//Count to deposit 
 	private long numberAccount;
 	//Personal identification
-	private int personalIdentifier;
+	private Integer personalIdentifier;
 	//Amount to deposit
-	private int amountDeposit;
-	private int status;
+	private Integer amountDeposit;
+	private Integer status;
 	//Operation date
 	private Date operationDate;
 }

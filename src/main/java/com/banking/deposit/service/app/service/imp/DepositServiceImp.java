@@ -1,5 +1,7 @@
 package com.banking.deposit.service.app.service.imp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class DepositServiceImp implements DepositService{
+	
+	private static final Logger log = LoggerFactory.getLogger(DepositServiceImp.class);
 	
 	@Autowired
 	private DepositRepository despositRepository;
