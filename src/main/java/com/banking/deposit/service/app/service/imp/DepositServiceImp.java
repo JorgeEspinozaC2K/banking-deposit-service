@@ -13,13 +13,13 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-public class DepositServiceImp implements DepositService{
-	
+public class DepositServiceImp implements DepositService {
+
 	private static final Logger log = LoggerFactory.getLogger(DepositServiceImp.class);
-	
+
 	@Autowired
 	private DepositRepository despositRepository;
-	
+
 	@Override
 	public Flux<Deposit> findAll() {
 		return despositRepository.findAll();
@@ -27,7 +27,16 @@ public class DepositServiceImp implements DepositService{
 
 	@Override
 	public Mono<Deposit> findById(String id) {
-		return despositRepository.findById(id);
+		return despositRepository.findById(id).defaultIfEmpty(new Deposit()).flatMap(_deposit -> {
+			if (_deposit.getId() == null) {
+				return Mono.error(new InterruptedException("Not found"));
+			} else {
+				return Mono.just(_deposit);
+			}
+		}).onErrorResume(_ex -> {
+			log.error(_ex.getMessage());
+			return Mono.empty();
+		});
 	}
 
 	@Override
