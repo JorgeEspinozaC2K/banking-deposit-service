@@ -18,16 +18,16 @@ public class DepositServiceImp implements DepositService {
 	private static final Logger log = LoggerFactory.getLogger(DepositServiceImp.class);
 
 	@Autowired
-	private DepositRepository despositRepository;
+	private DepositRepository depositRepository;
 
 	@Override
 	public Flux<Deposit> findAll() {
-		return despositRepository.findAll();
+		return depositRepository.findAll();
 	}
 
 	@Override
 	public Mono<Deposit> findById(String id) {
-		return despositRepository.findById(id).defaultIfEmpty(new Deposit()).flatMap(_deposit -> {
+		return depositRepository.findById(id).defaultIfEmpty(new Deposit()).flatMap(_deposit -> {
 			if (_deposit.getId() == null) {
 				return Mono.error(new InterruptedException("Not found"));
 			} else {
@@ -41,12 +41,17 @@ public class DepositServiceImp implements DepositService {
 
 	@Override
 	public Mono<Deposit> save(Deposit deposit) {
-		return despositRepository.save(deposit);
+		return depositRepository.save(deposit);
 	}
 
 	@Override
 	public Mono<Void> delete(Deposit deposit) {
-		return despositRepository.delete(deposit);
+		return depositRepository.delete(deposit);
+	}
+
+	@Override
+	public Flux<Deposit> findAllTenLast(Long cardNumber) {
+		return depositRepository.findTop10ByCardNumberOrderByOperationDateDesc(cardNumber);
 	}
 
 }

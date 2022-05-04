@@ -1,6 +1,6 @@
 package com.banking.deposit.service.app.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,13 +19,17 @@ public class Deposit {
 
 	@Id
 	private String id;
+	private Boolean fromCard;
+	private Long cardNumber;
 	//Count to deposit 
-	private long numberAccount;
+	private Long numberAccount;
+	private Long fromAnotherAccount;
+	private Long accountNumberFrom;
 	//Personal identification
 	private Integer personalIdentifier;
 	//Amount to deposit
 	private Integer amountDeposit;
 	private Integer status;
 	//Operation date
-	private Date operationDate;
+	private LocalDate operationDate;
 }

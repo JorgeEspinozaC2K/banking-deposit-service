@@ -25,4 +25,11 @@ public interface DepositRepository extends ReactiveMongoRepository<Deposit, Stri
 	 * @return
 	 */
 	public Flux<Deposit> findbyPersonalIdentifier(Integer personalIdentifier);
+	
+	/**
+	 * 
+	 * @param customerId
+	 * @return
+	 */
+	public Flux<Deposit> findTop10ByCardNumberOrderByOperationDateDesc(Long cardNumber);
 }

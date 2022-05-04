@@ -30,5 +30,7 @@ public interface DepositService {
 	 * @return Mono type void
 	 */
 	public Mono<Void> delete(Deposit deposit);
+	
+	public Flux<Deposit> findAllTenLast(Long cardNumber);
 
 }

@@ -33,6 +33,11 @@ public class DepositController {
 		return depositService.findById(id);
 	}
 	
+	@GetMapping("/lastTen/{cardNumber}")
+	public Flux<Deposit> searchLastTen(@PathVariable Long cardNumber){
+		return depositService.findAllTenLast(cardNumber);
+	}
+	
 	//This method save or update a record
 	@PostMapping("/save")
 	public Mono<Deposit> save(@RequestBody Deposit deposit){
