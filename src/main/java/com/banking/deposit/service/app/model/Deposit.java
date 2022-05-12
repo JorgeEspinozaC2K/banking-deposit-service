@@ -22,8 +22,8 @@ public class Deposit {
 	private Boolean fromCard;
 	private Long cardNumber;
 	//Count to deposit 
-	private Long numberAccount;
-	private Long fromAnotherAccount;
+	private Long accountNumber;
+	private Boolean fromAnotherAccount;
 	private Long accountNumberFrom;
 	//Personal identification
 	private Integer personalIdentifier;
